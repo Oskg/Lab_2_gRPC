@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package Game;
+
+option java_multiple_files = true;
+option java_package = "org.example.java";
+option java_outer_classname = "CheckeredGameProto";
+
+
+
+service CheckeredGame {
+  rpc addPlayer (addPlayerRequest) returns (appPlayerResponse)  {}
+  rpc getPlayerIndex(getPlayerIndexRequest) returns (getPlayerIndexResponse) {}
+  rpc getCurentPlayer(getCurentPlayerRequest) returns (getCurentPlayerResponse) {}
+  rpc makeLine(makeLineRequest) returns (makeLineResponse){}
+  rpc isGameOver(isGameOverRequest) returns (isGameOverResponse){}
+  rpc getPlayerScore(getPlayerScoreRequest) returns (getPlayerScoreResponse){}
+  rpc isReady(isReadyRequest) returns (isReadyResponse){}
+  rpc getWinner(getWinnerRequest) returns (getWinnerResponse){}
+}
+
+message getWinnerResponse{
+  string winner = 1;
+}
+
+message getWinnerRequest{
+
+}
+
+message isReadyResponse{
+  bool ready = 1;
+}
+
+message isReadyRequest{}
+
+
+message getPlayerScoreResponse{
+  int32 score = 1;
+}
+
+message getPlayerScoreRequest{
+  int32 index = 1;
+}
+
+message isGameOverResponse{
+  bool isGameOver = 1;
+}
+
+message isGameOverRequest{
+
+}
+
+message makeLineResponse{
+
+}
+
+message makeLineRequest{
+  int32 row = 1;
+  int32 col = 2;
+  string ori = 3;
+  int32 pindex = 4;
+
+}
+
+message getCurentPlayerRequest{
+}
+
+message getCurentPlayerResponse{
+  string name = 1;
+}
+
+message getPlayerIndexRequest{
+  string playerName = 1;
+}
+message getPlayerIndexResponse{
+  int32 index = 1;
+}
+message addPlayerRequest {
+  string name = 1;
+}
+
+message appPlayerResponse {
+  bool status = 1;
+}
